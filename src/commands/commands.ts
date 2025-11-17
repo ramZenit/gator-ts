@@ -1,4 +1,9 @@
-export type CommandHandler = (cmdName: string, ...args: string[]) => void;
+import { resetUsers } from "src/lib/db/queries/user";
+
+export type CommandHandler = (
+  cmdName: string,
+  ...args: string[]
+) => Promise<void>;
 
 export type CommandRegistry = Record<string, CommandHandler>;
 
@@ -10,15 +15,26 @@ export function registerCommands(
   registry[cmdName] = handler;
 }
 
-export function runCommand(
+export async function runCommand(
   registry: CommandRegistry,
   cmdName: string,
   ...args: string[]
-): void {
+): Promise<void> {
   const handler = registry[cmdName];
   if (!handler) {
     throw new Error(`Unknown command: ${cmdName}`);
   }
 
-  handler(cmdName, ...args);
+  await handler(cmdName, ...args);
+}
+
+export async function handlerReset() {
+  try {
+    await resetUsers();
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`error resetting db: ${error.message}`);
+    }
+  }
+  console.log("Database reset successfully.");
 }

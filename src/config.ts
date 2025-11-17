@@ -25,6 +25,11 @@ export function readConfig(): Config {
   return config;
 }
 
+export function getCurrentUser(): string {
+  const config = readConfig();
+  return config.currentUserName;
+}
+
 export function setUser(username: string): void {
   const config = readConfig();
   config.currentUserName = username;
