@@ -1,5 +1,9 @@
-import { getCurrentUser, setUser } from "../config.js";
-import { createUser, getUserByName, getUsers } from "../lib/db/queries/user.js";
+import { readConfig, setUser } from "../config.js";
+import {
+  createUser,
+  getUserByName,
+  getUsers,
+} from "../lib/db/queries/users.js";
 
 export async function handlerLogin(cmdName: string, ...args: string[]) {
   if (args.length !== 1) {
@@ -37,7 +41,7 @@ export async function hanlderUsers() {
     throw new Error("No user found.");
   }
 
-  const currentUser = getCurrentUser();
+  const currentUser = readConfig().currentUserName;
   let output = "Registered users:\n";
   for (const user of users) {
     output += `* ${user.name}${

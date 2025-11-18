@@ -1,4 +1,4 @@
-import { resetUsers } from "src/lib/db/queries/user";
+import { resetUsers } from "src/lib/db/queries/users";
 
 export type CommandHandler = (
   cmdName: string,

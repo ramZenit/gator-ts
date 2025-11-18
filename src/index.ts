@@ -2,17 +2,18 @@ import {
   type CommandRegistry,
   registerCommands,
   runCommand,
+  handlerReset,
 } from "./commands/commands.js";
 import {
   handlerLogin,
   handlerRegister,
   hanlderUsers,
 } from "./commands/users.js";
-import { handlerReset } from "./commands/commands.js";
+import { handlerAgg } from "./commands/aggregate.js";
+import { handlerAddFeed, handlerFeeds } from "./commands/feeds.js";
 
 async function main() {
   const args = process.argv.slice(2);
-
   if (args.length < 1) {
     console.log("usage cli <command> [args...]");
     process.exit(1);
@@ -26,6 +27,9 @@ async function main() {
   registerCommands(registry, "register", handlerRegister);
   registerCommands(registry, "reset", handlerReset);
   registerCommands(registry, "users", hanlderUsers);
+  registerCommands(registry, "agg", handlerAgg);
+  registerCommands(registry, "addfeed", handlerAddFeed);
+  registerCommands(registry, "feeds", handlerFeeds);
 
   try {
     await runCommand(registry, cmdName, ...cmdArgs);
