@@ -1,4 +1,7 @@
 import { resetUsers } from "src/lib/db/queries/users";
+import { User } from "src/lib/db/schema";
+import { readConfig } from "src/config.js";
+import { getUserByName } from "src/lib/db/queries/users.js";
 
 export type CommandHandler = (
   cmdName: string,
@@ -6,6 +9,12 @@ export type CommandHandler = (
 ) => Promise<void>;
 
 export type CommandRegistry = Record<string, CommandHandler>;
+
+export type UserCommandHandler = (
+  cmdName: string,
+  user: User,
+  ...args: string[]
+) => Promise<void> | void;
 
 export function registerCommands(
   registry: CommandRegistry,
