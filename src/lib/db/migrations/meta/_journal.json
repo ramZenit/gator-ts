@@ -15,6 +15,20 @@
       "when": 1763648781748,
       "tag": "0001_orange_gabe_jones",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1763980150977,
+      "tag": "0002_clammy_clea",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1763980509591,
+      "tag": "0003_massive_greymalkin",
+      "breakpoints": true
     }
   ]
 }

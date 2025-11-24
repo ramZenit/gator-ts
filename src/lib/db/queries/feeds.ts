@@ -33,3 +33,8 @@ export async function getFeeds() {
     .innerJoin(users, eq(feeds.urserId, users.id));
   return result;
 }
+
+export async function getFeedByUrl(url: string) {
+  const result = await db.select().from(feeds).where(eq(feeds.url, url));
+  return firstOrUndefined(result);
+}
