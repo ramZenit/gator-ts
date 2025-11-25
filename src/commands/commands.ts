@@ -1,7 +1,5 @@
 import { resetUsers } from "src/lib/db/queries/users";
 import { User } from "src/lib/db/schema";
-import { readConfig } from "src/config.js";
-import { getUserByName } from "src/lib/db/queries/users.js";
 
 export type CommandHandler = (
   cmdName: string,
