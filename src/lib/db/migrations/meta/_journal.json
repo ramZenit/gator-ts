@@ -29,6 +29,20 @@
       "when": 1763980509591,
       "tag": "0003_massive_greymalkin",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1764065346402,
+      "tag": "0004_colorful_cobalt_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1764066493341,
+      "tag": "0005_magenta_punisher",
+      "breakpoints": true
     }
   ]
 }
